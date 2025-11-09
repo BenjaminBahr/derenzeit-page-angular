@@ -7,8 +7,8 @@
 /* Hero Section Styling */
 .hero-section {
   text-align: center;
-  padding: 4rem 2rem;
-  margin-bottom: 3rem;
+  padding: 2rem 1rem;
+  margin-bottom: 1rem;
   background-color: #f0f0f5; /* Light background for contrast */
   border-radius: 8px;
 }
@@ -38,34 +38,4 @@
 
 .cta-button:hover {
   background-color: #0056b3;
-}
-
-/* General Section Styling */
-.info-section, .faq-section {
-  margin-bottom: 3rem;
-  padding: 1.5rem 0;
-  border-bottom: 1px solid;
-}
-
-h2 {
-  font-size: 1.8rem;
-  margin-bottom: 1.5rem;
-  border-left: 4px solid;
-  padding-left: 10px;
-}
-
-.faq-item {
-  margin-bottom: 1rem;
-  padding: 0.5rem 0;
-}
-
-.faq-item h3 {
-  font-size: 1.1rem;
-  color: #333;
-  cursor: pointer; /* Suggests interactivity */
-}
-
-.faq-item p {
-  color: #666;
-  margin-top: 0.5rem;
 }
