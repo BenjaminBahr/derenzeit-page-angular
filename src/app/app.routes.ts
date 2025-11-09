@@ -14,7 +14,7 @@ export const routes: Routes = [
     // 2. Issues Feature (List + Detail views)
     {
       path: 'issues',
-      loadChildren: () => import('./core/features/issues/issues')
+      loadComponent: () => import('./core/features/issues/issues')
         .then(m => m.Issues)
     },
     // 3. Legal Page (Lazy loaded)
