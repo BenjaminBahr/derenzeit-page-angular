@@ -1,0 +1,40 @@
+.legal-page {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6; /* Enhance readability for long text */
+}
+
+.page-title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.legal-section {
+  margin-bottom: 3rem;
+  border-left: 3px solid #ccc;
+  padding-left: 15px;
+}
+
+.legal-section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.legal-section h3 {
+  font-size: 1.2rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+address {
+  font-style: normal; /* Override default italic address style */
+  margin-bottom: 1rem;
+}
+
+.legal-section p, .legal-section a {
+  font-size: 1rem;
+  color: #444;
+}

@@ -1,1 +1,27 @@
-<p>issues works!</p>
+<div class="issue-list-page">
+  <h1 class="page-title">Fanzine Issue Archive</h1>
+  <p class="page-description">
+    Click on an issue to view details and start your download.
+  </p>
+
+  <div class="issues-grid">
+    <a *ngFor="let issue of issues"
+       [routerLink]="['/issues', issue.id]"
+       class="issue-card"
+       title="View details for {{ issue.name }}">
+
+      <div class="card-cover"></div>
+      <div class="card-info">
+        <h3 class="card-title">{{ issue.name }}</h3>
+        <span class="card-action">Download Ready &rarr;</span>
+      </div>
+    </a>
+    <a [routerLink]="['/issues', 1]" class="issue-card">
+      <div class="card-cover">Issue 1</div>
+      <div class="card-info">
+        <h3 class="card-title">Issue 1: The Debut</h3>
+        <span class="card-action">Download Ready &rarr;</span>
+      </div>
+    </a>
+  </div>
+</div>
