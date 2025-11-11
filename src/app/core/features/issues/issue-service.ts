@@ -11,15 +11,17 @@ export interface Issue {
 })
 export class IssueService {
 
-  getIssues(): Issue[] {
-    return [
-      {
-        id: 1,
-        name: "Ausgabe 1",
-        link: "www.example.com"
-      }
+  issueList: Issue[] = [
+    {
+      id: 1,
+      name: "Ausgabe 1",
+      link: "www.example.com"
+    }
 
-    ]
+  ]
+
+  getIssues(): Issue[] {
+    return this.issueList;
   }
 
 }
