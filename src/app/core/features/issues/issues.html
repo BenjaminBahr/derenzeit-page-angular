@@ -7,7 +7,7 @@
   <div class="issues-grid">
     <a *ngFor="let issue of issues"
        class="issue-card"
-       title="Details {{ issue.name }}"
+       title="{{ issue.link }}"
        href="{{issue.link}}">
       <div class="card-cover"></div>
       <div class="card-info">
