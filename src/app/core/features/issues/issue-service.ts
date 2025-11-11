@@ -15,7 +15,7 @@ export class IssueService {
     {
       id: 1,
       name: "Ausgabe 1",
-      link: "www.example.com"
+      link: "http://www.example.com"
     }
 
   ]
