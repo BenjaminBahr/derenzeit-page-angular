@@ -37,16 +37,13 @@
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
-.card-cover {
-  /* Placeholder for an actual image or cover art */
-  height: 200px;
-  background-color: #4a90e2; /* Sample color */
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  font-weight: bold;
+.card-cover-image {
+  /* This ensures the image covers the container while maintaining aspect ratio */
+  width: 100%;
+  height: 200px; /* Match the height of your old placeholder */
+  object-fit: cover;
+  /* Optional: To avoid abrupt loading and give a slight visual separation */
+  display: block;
 }
 
 .card-info {
