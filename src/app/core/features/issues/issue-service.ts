@@ -12,7 +12,7 @@ export interface Issue {
 })
 export class IssueService {
 
-  filePath = `../../shared/`;
+  filePath = `covers/`;
   fileEnding = `.webp`;
 
   issueList: Issue[] = [
