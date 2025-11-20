@@ -8,7 +8,7 @@ export const routes: Routes = [
       path: 'welcome',
       loadComponent: () => import('./core/features/welcome/welcome')
         .then(m => m.Welcome),
-      title: 'Welcome - [Fanzine Name]'
+      title: 'Willkommen'
     },
     {
       path: 'about',
@@ -19,13 +19,14 @@ export const routes: Routes = [
     {
       path: 'issues',
       loadComponent: () => import('./core/features/issues/issues')
-        .then(m => m.Issues)
+        .then(m => m.Issues),
+      title: 'Ausgaben'
     },
     {
       path: 'legal',
       loadComponent: () => import('./core/features/legal/legal')
         .then(m => m.Legal),
-      title: 'Legal - [Fanzine Name]'
+      title: 'Impressum'
     },
     // 404/Not Found Handler
     {path: '**', redirectTo: 'welcome'}
