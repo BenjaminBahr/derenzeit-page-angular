@@ -10,5 +10,5 @@ import {RouterLink} from '@angular/router';
   styleUrl: './welcome.css',
 })
 export class Welcome {
-
+  derenzeitLogoPath = 'Derenzeit_Titel_01.png';
 }
