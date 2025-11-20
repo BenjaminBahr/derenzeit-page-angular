@@ -1,1 +1,40 @@
-/* You can add global styles to this file, and also import other style files */
+/* src/styles.css or src/styles.scss */
+
+/* 1. Regular (Standard) */
+@font-face {
+  font-family: 'Gentium Basic';
+  src: url('~public/fonts/GenBasR.ttf') format('ttf');
+  font-weight: 400; /* Standard weight for 'regular' */
+  font-style: normal;
+}
+
+/* 2. Bold */
+@font-face {
+  font-family: 'Gentium Basic';
+  src: url('~public/fonts/GenBasB.ttf') format('ttf');
+  font-weight: 700; /* Standard weight for 'bold' */
+  font-style: normal;
+}
+
+/* 3. Italic */
+@font-face {
+  font-family: 'Gentium Basic';
+  src: url('~public/fonts/GenBasI.ttf') format('ttf');
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* 4. Bold Italic */
+@font-face {
+  font-family: 'Gentium Basic';
+  src: url('~public/fonts/GenBasBI.ttf') format('ttf');
+  font-weight: 700;
+  font-style: italic;
+}
+
+body {
+  /* This is the only place you need to declare the font-family. */
+  /* The browser will automatically choose the correct file based on the context. */
+  font-family: 'Gentium Basic', serif;
+  margin: 0;
+}
