@@ -8,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class Legal {
   fanprojektLogoPath = 'dsa_logo_fanprojekt.png';
+  kontaktImagePath = 'kontakt.png';
 }
