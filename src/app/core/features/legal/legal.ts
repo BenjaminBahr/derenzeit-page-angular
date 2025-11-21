@@ -7,6 +7,6 @@ import { Component } from '@angular/core';
   styleUrl: './legal.css',
 })
 export class Legal {
-  fanprojektLogoPath = 'dsa_logo_fanprojekt.png';
+  fanprojektLogoPath = 'images/dsa_logo_fanprojekt.png';
   kontaktImagePath = 'kontakt.png';
 }
