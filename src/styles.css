@@ -1,8 +1,8 @@
-/* src/styles.css or src/styles.scss */
 
 /* 1. Regular (Standard) */
 @font-face {
   font-family: 'Gentium Basic';
+  /*noinspection CssUnknownTarget*/
   src: url('/fonts/GenBasR.ttf') format('truetype');
   font-weight: 400; /* Standard weight for 'regular' */
   font-style: normal;
@@ -11,6 +11,7 @@
 /* 2. Bold */
 @font-face {
   font-family: 'Gentium Basic';
+  /*noinspection CssUnknownTarget*/
   src: url('/fonts/GenBasB.ttf') format('truetype');
   font-weight: 700; /* Standard weight for 'bold' */
   font-style: normal;
@@ -19,6 +20,7 @@
 /* 3. Italic */
 @font-face {
   font-family: 'Gentium Basic';
+  /*noinspection CssUnknownTarget*/
   src: url('/fonts/GenBasI.ttf') format('truetype');
   font-weight: 400;
   font-style: italic;
@@ -27,6 +29,7 @@
 /* 4. Bold Italic */
 @font-face {
   font-family: 'Gentium Basic';
+  /*noinspection CssUnknownTarget*/
   src: url('/fonts/GenBasBI.ttf') format('truetype');
   font-weight: 700;
   font-style: italic;
