@@ -1,6 +1,6 @@
 <ul>
-  <li><a routerLink="/welcome">Willkommen</a></li>
-  <li><a routerLink="/about">Über uns</a></li>
-  <li><a routerLink="/issues">Ausgaben</a></li>
-  <li><a routerLink="/legal">Impressum</a></li>
+  <li><a [routerLink]="'/' + welcomeUrl">Willkommen</a></li>
+  <li><a [routerLink]="'/' + aboutUrl">Über uns</a></li>
+  <li><a [routerLink]="'/' + issuesUrl">Ausgaben</a></li>
+  <li><a [routerLink]="'/' + legalUrl">Impressum</a></li>
 </ul>
