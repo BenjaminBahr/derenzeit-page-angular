@@ -1,0 +1,13 @@
+RewriteEngine On
+# Stellt sicher, dass das Rewrite-Modul an ist
+
+# Ignoriere Anfragen, die sich auf eine existierende Datei beziehen
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+# Ignoriere Anfragen, die sich auf einen existierenden Ordner beziehen
+RewriteCond %{REQUEST_FILENAME} -d
+# Wenn die obigen Bedingungen zutreffen, wird nichts umgeschrieben und der Request läuft normal durch
+RewriteRule ^ - [L]
+
+# Alle anderen Anfragen werden an index.html umgeleitet
+# Dadurch übernimmt Angular's Routing (client-seitig)
+RewriteRule ^(.*)$ /index.html [L]
