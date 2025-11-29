@@ -11,8 +11,6 @@ import {issuesUrl} from '../../../app.routes';
   styleUrl: './welcome.css',
 })
 export class Welcome {
-  derenzeitLoewePath = 'images/Loewe_02.png';
-  derenzeitLogoPath = 'images/Derenzeit_Titel_01.png';
-  derenzeitDrachePath = 'images/Drache_02.png';
+  derenzeitLogoPath = 'images/Derenzeit_Titel.png';
   protected readonly issuesUrl = issuesUrl;
 }
