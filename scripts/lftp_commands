@@ -1,0 +1,5 @@
+mirror -R \
+    --delete \
+    --only-newer \
+    --parallel=5 \
+    /home/yelemiz/projects/src/derenzeit-page-angular/dist/derenzeit-page-angular/ /

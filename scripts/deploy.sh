@@ -29,27 +29,11 @@ log_error() {
     exit 1
 }
 
-# --- Basic check for presence of variables ---
+# --- Basic check for presence of lftp ---
 
-SFTP_HOST=${SFTP_HOST:-}
-SFTP_USER=${SFTP_USER:-}
-SFTP_PW_FILE=${SFTP_PW_FILE:-}
-
-if [ -z "${SFTP_USER}" ] || [ -z "${SFTP_HOST}" ]; then
-  log_error "Variables SFTP_USER or SFTP_HOST not set."
-  exit 1
+if ! command -v lftp &> /dev/null; then
+    log_error "Error: lftp is not installed. Please install it to deploy."
 fi
-
-if [ -z "${SFTP_PW_FILE}" ]; then
-  log_error "Variable SFTP_PW_FILE not set."
-  exit 1
-fi
-
-if [ ! -f "${SFTP_PW_FILE}" ]; then
-  log_error "Password file ${SFTP_PW_FILE} not found."
-  exit 1
-fi
-
 
 # --- Git Operations: Checkout and Pull ---
 log_info "Starting deployment process..."
@@ -84,34 +68,9 @@ fi
 log_info "Angular application built successfully. Output in '$DIST_FOLDER'."
 
 # --- 3. & 4. SFTP Configuration and Connection Setup ---
-log_info "3. Configuring SFTP connection parameters."
+log_info "Beginning deployment"
 
-SFTP_COMMAND_FILE=$(mktemp)
-
-# SFTP Batch Commands
-cat > "$SFTP_COMMAND_FILE" <<- EOCMD
-# Change local directory to the build folder
-lcd "$DIST_FOLDER"
-
-# Upload everything recursively (all files and folders)
-# The -r flag is critical for uploading the whole application structure.
-put -r *
-
-# Exit SFTP
-bye
-EOCMD
-
-SFTP_COMMAND="sftp -f ${SFTP_PW_FILE} -b $SFTP_COMMAND_FILE $SFTP_USER@$SFTP_HOST"
-
-
-# --- Upload Everything via SFTP ---
-log_info "4. Starting file upload to $SFTP_HOST..."
-log_info "Executing SFTP batch file commands."
-
-$SFTP_COMMAND || log_error "SFTP upload failed. Check SSH key setup, host, user, and remote path."
-
-# Clean up the temporary SFTP command file
-rm -f "$SFTP_COMMAND_FILE"
+lftp -d -f "./lftp_commands" sftp://5018069654.ssh.w2.strato.hosting || log_error "LFTP file upload failed. Please check connection details"
 
 log_info "Deployment completed successfully! Files are now live on the server."
 
