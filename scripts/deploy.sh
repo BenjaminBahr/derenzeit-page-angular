@@ -86,71 +86,32 @@ log_info "Angular application built successfully. Output in '$DIST_FOLDER'."
 # --- 3. & 4. SFTP Configuration and Connection Setup ---
 log_info "3. Configuring SFTP connection parameters."
 
+SFTP_COMMAND_FILE=$(mktemp)
 
+# SFTP Batch Commands
+cat > "$SFTP_COMMAND_FILE" <<- EOCMD
+# Change local directory to the build folder
+lcd "$DIST_FOLDER"
 
-echo "SFTP_USER: $SFTP_USER"
+# Upload everything recursively (all files and folders)
+# The -r flag is critical for uploading the whole application structure.
+put -r *
 
-# Check if environment variables are set
-if [ -z "$SFTP_USER" ] || [ -z "$SFTP_HOST" ] ; then
-    log_info "SFTP credentials are not set via environment variables. Asking for interactive input."
-
-    # Interactive input fallback
-    read -p "Enter SFTP Username: " SFTP_USER
-    read -p "Enter SFTP Host: " SFTP_HOST
-
-    if [ -z "$SFTP_USER" ] || [ -z "$SFTP_HOST" ]; then
-        log_error "SFTP connection details cannot be empty."
-    fi
-
-    # Since we are using interactive input, we will fall back to an interactive SFTP session,
-    # which is simpler and doesn't rely on sshpass for password input.
-    SFTP_COMMAND="sftp $SFTP_USER@$SFTP_HOST"
-    INTERACTIVE=true
-else
-    log_info "Using environment variables for non-interactive connection."
-    # Non-interactive mode requires a method to handle the password if SSH keys aren't used.
-    # We will use a dedicated batch file for SFTP commands.
-    SFTP_COMMAND_FILE=$(mktemp)
-
-    # SFTP Batch Commands
-    cat > "$SFTP_COMMAND_FILE" <<- EOCMD
-    # Change local directory to the build folder
-    lcd "$DIST_FOLDER"
-
-    # Upload everything recursively (all files and folders)
-    # The -r flag is critical for uploading the whole application structure.
-    put -r *
-
-    # Exit SFTP
-    bye
+# Exit SFTP
+bye
 EOCMD
 
-    SFTP_COMMAND="sftp -b $SFTP_COMMAND_FILE $SFTP_USER@$SFTP_HOST"
-    INTERACTIVE=false
-fi
+SFTP_COMMAND="sftp -f ${SFTP_PW_FILE} -b $SFTP_COMMAND_FILE $SFTP_USER@$SFTP_HOST"
 
-# --- 5. Upload Everything via SFTP ---
+
+# --- Upload Everything via SFTP ---
 log_info "4. Starting file upload to $SFTP_HOST..."
 log_info "Executing SFTP batch file commands."
 
-    # If using password in SFTP_PASS, this requires 'sshpass' to be installed and used,
-    # which is outside the scope of a basic script. We rely on key-based authentication
-    # or the user setting up passwordless connection, or using a tool like sshpass externally.
-    # For robustness, we will attempt the connection directly. If it requires a password
-    # and none is provided interactively, it will fail (and set -e will catch it).
+$SFTP_COMMAND || log_error "SFTP upload failed. Check SSH key setup, host, user, and remote path."
 
-    # If SFTP_PASS is set, we use sshpass (if available) - this is a non-standard dependency.
-    if [ -n "$SFTP_PASS" ]; then
-        command -v sshpass >/dev/null 2>&1 || log_error "SFTP_PASS is set, but 'sshpass' is required for non-interactive password login. Please install 'sshpass' or use SSH keys."
-        echo "$SFTP_PASS" | sshpass -P 'password' $SFTP_COMMAND || log_error "SFTP upload failed using SFTP_PASS. Check host/user/password and remote path."
-    else
-        # Assuming SSH Key-based authentication if no password is set
-        $SFTP_COMMAND || log_error "SFTP upload failed. Check SSH key setup, host, user, and remote path."
-    fi
-
-    # Clean up the temporary SFTP command file
-    rm -f "$SFTP_COMMAND_FILE"
-fi
+# Clean up the temporary SFTP command file
+rm -f "$SFTP_COMMAND_FILE"
 
 log_info "Deployment completed successfully! Files are now live on the server."
 
