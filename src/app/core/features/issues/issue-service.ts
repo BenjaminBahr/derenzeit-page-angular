@@ -17,6 +17,12 @@ export class IssueService {
 
   issueList: Issue[] = [
     {
+      id: 16,
+      link: `https://www.ulisses-ebooks.de/de/product/550074/derenzeit-ausgabe-016-1048-bf`,
+      name: `Ausgabe 16`,
+      fileName: this.filePath + 'DZ_16' + this.fileEnding,
+    },
+    {
       id: 15,
       link: `https://www.ulisses-ebooks.de/en/product/538755/derenzeit-ausgabe-015-1047-bf`,
       name: `Ausgabe 15`,
