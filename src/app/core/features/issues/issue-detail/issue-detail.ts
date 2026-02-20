@@ -17,7 +17,7 @@ import {Issue, IssueService} from '../issue-service';
 export class IssueDetail {
   issue!: Issue;
   issueService = inject(IssueService);
-  readonly DISABLED_BUTTON_TEXT = "Download läuft bald zur Verfügung";
+  readonly DISABLED_BUTTON_TEXT = "Download steht bald zur Verfügung";
   readonly issuesUrl = 'ausgaben';
 
   constructor(private route: ActivatedRoute) {

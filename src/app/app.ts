@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {MainLayout} from './core/layout/main-layout/main-layout';
 
 @Component({
