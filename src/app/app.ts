@@ -1,12 +1,15 @@
-import {Component, signal} from '@angular/core';
+import {Component} from '@angular/core';
 import {MainLayout} from './core/layout/main-layout/main-layout';
+import {IssueService} from './core/features/issues/issue-service';
 
 @Component({
   selector: 'app-root',
-  imports: [MainLayout],
+  imports: [MainLayout, IssueService],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.css',
+  providers: [IssueService]
 })
+
 export class App {
-  protected readonly title = signal('derenzeit-page-angular');
+  protected readonly title = 'derenzeit-page-angular';
 }

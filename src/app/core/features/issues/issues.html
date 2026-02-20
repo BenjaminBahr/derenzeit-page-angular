@@ -5,14 +5,13 @@
   </p>
 
   <div class="issues-grid">
-    <a *ngFor="let issue of issues"
+<a *ngFor="let issue of issues"
        class="issue-card"
        title="{{ issue.name }}"
-       [href]="issue.link"
-       target="_blank" > <img [src]="issue.fileName" [alt]="'Cover image for ' + issue.name" class="card-cover-image">
-      <div class="card-info">
-        <h3 class="card-title">{{ issue.name }}</h3>
-      </div>
-    </a>
+       [routerLink]="['/', issuesUrl, issue.id]"> <img [src]="issue.fileName" [alt]="'Cover image for ' + issue.name" class="card-cover-image">
+       <div class="card-info">
+         <h3 class="card-title">{{ issue.name }}</h3>
+       </div>
+     </a>
   </div>
 </div>
