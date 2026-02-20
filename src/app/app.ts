@@ -1,4 +1,4 @@
-import {Component, signal} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {MainLayout} from './core/layout/main-layout/main-layout';
 
 @Component({
@@ -7,6 +7,7 @@ import {MainLayout} from './core/layout/main-layout/main-layout';
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
+
 export class App {
-  protected readonly title = signal('derenzeit-page-angular');
+  protected readonly title = 'derenzeit-page-angular';
 }
