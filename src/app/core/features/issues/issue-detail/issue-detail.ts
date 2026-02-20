@@ -1,25 +1,27 @@
 import {Component, inject} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
+import {CommonModule} from '@angular/common';
+import {RouterLink} from '@angular/router';
 import {Issue, IssueService} from '../issue-service';
-import {CommonModule} from "@angular/common";
 
 @Component({
   selector: 'app-issue-detail',
   imports: [
-    CommonModule
+    CommonModule,
+    RouterLink
   ],
   templateUrl: './issue-detail.html',
-  styleUrl: './issue-detail.css',
+  styleUrls: ['./issue-detail.css']
 })
 
 export class IssueDetail {
   issue!: Issue;
   issueService = inject(IssueService);
   readonly DISABLED_BUTTON_TEXT = "Download läuft bald zur Verfügung";
+  readonly issuesUrl = 'ausgaben';
 
   constructor(private route: ActivatedRoute) {
-    const idParam = this.route.snapshot.paramMap.get('id');
-    const id = Number(idParam);
-    this.issue = this.issueService.getIssues().find(issue => issue.id === id) || this.issueService.getIssues()[0];
+    const issueId = this.route.snapshot.paramMap.get('id');
+    this.issue = this.issueService.getIssues().find(issue => issue.id === Number(issueId)) || this.issueService.getIssues()[0];
   }
 }
