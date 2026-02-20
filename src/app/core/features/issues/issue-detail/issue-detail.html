@@ -1,5 +1,5 @@
 <div class="issue-detail-page">
-  <button (click)="window.history.back()" class="back-button">← Zurück zur Übersicht</button>
+  <a [routerLink]="['/', 'ausgaben']" class="back-button">← Zurück zur Übersicht</a>
 
   <div class="issue-detail-container">
     <div class="issue-image-section">
@@ -17,7 +17,7 @@
         {{ DISABLED_BUTTON_TEXT }}
       </button>
 
-      <a [href]="issue.link" target="_blank" class="external-link">
+      <a href="{{ issue.link }}" target="_blank" class="external-link">
         Jetzt im Ulisses-Shop kaufen →
       </a>
     </div>
