@@ -1,0 +1,25 @@
+<div class="issue-detail-page">
+  <a [routerLink]="['/', 'ausgaben']" class="back-button">← Zurück zur Übersicht</a>
+
+  <div class="issue-detail-container">
+    <div class="issue-image-section">
+      <img [src]="issue.fileName" [alt]="issue.name + ' Cover'" class="issue-cover-image">
+    </div>
+
+    <div class="issue-info-section">
+      <h1 class="issue-title">{{ issue.name }}</h1>
+
+      <div class="issue-description">
+        {{ issue.description }}
+      </div>
+
+      <button disabled class="download-button">
+        {{ DISABLED_BUTTON_TEXT }}
+      </button>
+
+      <a href="{{ issue.link }}" target="_blank" class="external-link">
+        Ausgabe im Ulisses shop
+      </a>
+    </div>
+  </div>
+</div>
