@@ -28,6 +28,12 @@ export const routes: Routes = [
       title: 'Ausgaben'
     },
     {
+      path: issuesUrl + '/:id',
+      loadComponent: () => import('./core/features/issues/issue-detail/issue-detail')
+        .then(m => m.IssueDetail),
+      title: 'Ausgabedetails'
+    },
+    {
       path: legalUrl,
       loadComponent: () => import('./core/features/legal/legal')
         .then(m => m.Legal),
