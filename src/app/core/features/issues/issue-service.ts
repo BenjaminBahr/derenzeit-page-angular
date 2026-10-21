@@ -17,6 +17,12 @@ export class IssueService {
 
   issueList: Issue[] = [
     {
+      id: 19,
+      link: `https://site.ulisses-ebooks.de/product/590118/DERENZEIT--Ausgabe-019--1049-BF`,
+      name: `Ausgabe 19`,
+      fileName: this.filePath + 'DZ_19.jpg',
+    },
+    {
       id: 18,
       link: `https://www.ulisses-ebooks.de/de/product/574530/derenzeit-ausgabe-018-1049-bf`,
       name: `Ausgabe 18`,
